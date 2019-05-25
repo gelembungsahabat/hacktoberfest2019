@@ -20,8 +20,8 @@ time.sleep(5)
 # ball in the HSV color space, then initialize the
 # list of tracked points
 
-greenLower = np.array([30, 1, 95 ])
-greenUpper = np.array([30, 255, 255])
+greenLower = np.array([160, 48, 26 ])
+greenUpper = np.array([170, 255, 255])
 
 
 pts = deque(maxlen=64)
@@ -45,20 +45,42 @@ while True:
 		if radius > 0:
 			cv2.circle(mask, (int(x), int(y)), 5,(255, 0, 255), 2)
 			cv2.putText(mask,"detected",(30,30),fo,1,w,2)
+
+	
+			if x < 100:
+				cv2.putText(mask,"det",(30,100),fo,1,w,2)
+				data = str("1")
+				arduino.write(data.encode())
+	
+			if x >= 100 and x < 200:
+				cv2.putText(mask,"det",(30,100),fo,1,w,2)
+				data = str("2")
+				arduino.write(data.encode())
+
+	
+			if x >= 200 and x < 320:
+				cv2.putText(mask,"det",(30,100),fo,1,w,2)
+				data = str("3")
+				arduino.write(data.encode())
+
+		else:
+			data = str("0")
+			arduino.write(data.encode())
+			
 	if len(cnts) == 0:
 		ada_color = 0
 		x = 0
 		y = 0
 		
 	x_s = x
-	y_s = y + 500
+	y_s = y 
 
 	pts.appendleft(center)
 	cv2.imshow("Frame", mask)
 	cv2.imshow("img", img)
-	data = str("%d %d\n") % (x_s, y_s)
+	#data = str("%d %d\n") % (x_s, y_s)
 	print ("detect: %d %d" % (x, y))	
-	arduino.write(data.encode())   
+	#arduino.write(data.encode())   
 	key = cv2.waitKey(1) & 0xFF
 	if key == ord("q"):
 		break
