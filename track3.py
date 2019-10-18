@@ -11,7 +11,7 @@ import time
 #arduino.flush()					    
 x_s=0
 y_s=0
-r_s=0
+r_s=1
 cap = cv2.VideoCapture(0)
 
 time.sleep(5)
