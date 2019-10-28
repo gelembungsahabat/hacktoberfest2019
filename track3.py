@@ -20,7 +20,7 @@ time.sleep(5)
 # ball in the HSV color space, then initialize the
 # list of tracked points
 
-greenLower = np.array([160, 48, 26 ])
+greenLower = np.array([160, 48, 30 ])
 greenUpper = np.array([170, 255, 255])
 
 
