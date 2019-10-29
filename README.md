@@ -1,2 +1,3 @@
-# hacktoberfest2019
-untuk event hacktoberfest 2019
+#Image Thresholding with Python
+
+mendeteksi warna dengan menggunakan bahasa pemrograman python dengan bantuan OpenCV
