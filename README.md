@@ -1,3 +1,3 @@
-#Image Thresholding with Python
+#ImageThresholdingwithPython
 
 mendeteksi warna dengan menggunakan bahasa pemrograman python dengan bantuan OpenCV
